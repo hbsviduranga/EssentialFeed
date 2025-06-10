@@ -1,4 +1,12 @@
-private class FeedItemsMapper {
+//
+//  FeedItemsMapper.swift
+//  EssentialFeed
+//
+//  Created by Sumeda Viduranga on 2025-06-10.
+//
+
+
+internal final class FeedItemsMapper {
     private struct Root:Decodable {
         let items: [Item]
     }
@@ -14,9 +22,9 @@ private class FeedItemsMapper {
         }
     }
     
-    static var OK_200: Int { return 200 }
+    private static var OK_200: Int { return 200 }
     
-    static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [FeedItem] {
+    internal static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [FeedItem] {
         guard response.statusCode == OK_200 else {
             throw RemoteFeedLoader.Error.invalidData
         }
